@@ -2,19 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux'
 
 import { anecdoteAction } from '../reducers/anecdoteReducer'
-import { addMessage, removeMessage } from '../reducers/notificationReducer'
+import { setNotification } from '../reducers/notificationReducer'
 
-const _AnecdoteForm = ({ anecdoteAction, removeMessage, addMessage }) => {
+const _AnecdoteForm = ({ anecdoteAction, setNotification }) => {
 
-  
-  const addAnecdote = event => {
+  const addAnecdote = async event => {
     event.preventDefault()
     const content = event.target.content.value
+    event.target.content.value = ''
     anecdoteAction(content)
-    addMessage(content,'You created ')
-    setTimeout(() => {
-      removeMessage()
-    },5000)
+    setNotification(`You created '${content}'`,5)
   }
 
   return (
@@ -30,8 +27,7 @@ const _AnecdoteForm = ({ anecdoteAction, removeMessage, addMessage }) => {
 
 const mapDispatchToProps = {
   anecdoteAction,
-  addMessage,
-  removeMessage
+  setNotification
 }
 
 export const AnecdoteForm = connect(null,mapDispatchToProps)(_AnecdoteForm)

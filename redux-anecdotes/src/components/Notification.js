@@ -21,8 +21,6 @@ const _Notification = ({ notification }) => {
 }
 
 const mapStateToProps = (state) => {
-  // sometimes it is useful to console log from mapStateToProps
-  console.log(state)
   return {
     notification: state.notification
   }
