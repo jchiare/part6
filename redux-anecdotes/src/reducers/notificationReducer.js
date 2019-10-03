@@ -1,11 +1,11 @@
-export const addMessage = (message) => {
+const addMessage = (message) => {
   return {
     type: 'NEW_MESSAGE',
     message
   }
 }
  
-export const removeMessage = () => {
+const removeMessage = () => {
   return {
     type: 'NEW_MESSAGE',
     message: null,
